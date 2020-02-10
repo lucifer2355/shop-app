@@ -9,3 +9,4 @@ ___________________ install package _______________________
 4. npm install react-native-screens
 5. npm install --save expo-font
 6. npm install --save-dev redux-devtools-extension
+7. npm install --save @expo/vector-icons
