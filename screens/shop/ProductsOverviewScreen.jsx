@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, FlatList, Text } from 'react-native';
+import { StyleSheet, FlatList } from 'react-native';
 import { useSelector } from 'react-redux';
 import ProductItem from '../../components/shop/ProductItem';
 
-const ProductOverViewScreen = () => {
+const ProductOverViewScreen = props => {
 	const products = useSelector(state => state.products.availableProducts);
 
 	return (
@@ -14,7 +14,12 @@ const ProductOverViewScreen = () => {
 					image={itemData.item.imageUrl}
 					title={itemData.item.title}
 					price={itemData.item.price}
-					onViewDetail={() => {}}
+					onViewDetail={() => {
+						props.navigation.navigate('ProductDetail', {
+							productId: itemData.item.id,
+							productTitle: itemData.item.title
+						});
+					}}
 					onAddToCart={() => {}}
 				/>
 			)}
