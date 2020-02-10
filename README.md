@@ -8,4 +8,4 @@ ___________________ install package _______________________
 3. npm install react-navigation-stack @react-native-community/masked-view react-native-safe-area-context
 4. npm install react-native-screens
 5. npm install --save expo-font
-6. npm install --save-dev redux-dextools-extension
+6. npm install --save-dev redux-devtools-extension
