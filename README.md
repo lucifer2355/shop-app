@@ -7,3 +7,4 @@ ___________________ install package _______________________
 2. expo install react-native-gesture-handler react-native-reanimated
 3. npm install react-navigation-stack @react-native-community/masked-view react-native-safe-area-context
 4. npm install react-native-screens
+5. npm install --save expo-font
