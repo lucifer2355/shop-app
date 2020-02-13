@@ -12,3 +12,4 @@ ___________________ install package _______________________
 7. npm install --save @expo/vector-icons
 8. npm install react-navigation-drawer
 9. npm install react-navigation
+10. npm install --save moment
