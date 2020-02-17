@@ -13,10 +13,10 @@ import HeaderButton from "../../components/UI/HeaderButton";
 import * as productsActions from "../../store/actions/products";
 import Input from "../../components/UI/Input";
 
-const FORM_UPDATE = "UPDATE";
+const FORM_INPUT_UPDATE = "FORM_INPUT_UPDATE";
 
 const formReducer = (state, action) => {
-  if (action.type === FORM_UPDATE) {
+  if (action.type === FORM_INPUT_UPDATE) {
     const updatedValues = {
       ...state.inputValues,
       [action.input]: action.value
@@ -68,6 +68,7 @@ const EditProdutScreen = props => {
       Alert.alert("Wrong input!", "Please check the error in the form.", [
         { text: "Okay" }
       ]);
+      return;
     }
 
     if (editedProduct) {
@@ -99,7 +100,7 @@ const EditProdutScreen = props => {
   const inputChangeHandler = useCallback(
     (inputIdentifier, inputValue, inputValidity) => {
       dispatchFormState({
-        type: FORM_UPDATE,
+        type: FORM_INPUT_UPDATE,
         value: inputValue,
         isValid: inputValidity,
         input: inputIdentifier

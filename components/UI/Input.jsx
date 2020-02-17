@@ -26,7 +26,7 @@ const inputReducer = (state, action) => {
 const Input = props => {
   const [inputState, dispatch] = useReducer(inputReducer, {
     value: props.initialValue ? props.initialValue : "",
-    isValid: props.initialValid,
+    isValid: props.initiallyValid,
     touched: false
   });
 
@@ -60,7 +60,9 @@ const Input = props => {
     dispatch({ type: INPUT_CHANGE, value: text, isValid: isValid });
   };
 
-  const lostFocusHandler = () => {};
+  const lostFocusHandler = () => {
+    dispatch({ type: INPUT_BLUR });
+  };
 
   return (
     <View style={styles.formControl}>
