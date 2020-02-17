@@ -13,3 +13,4 @@ ___________________ install package _______________________
 8. npm install react-navigation-drawer
 9. npm install react-navigation
 10. npm install --save moment
+11. npm install --save redux-thunk
