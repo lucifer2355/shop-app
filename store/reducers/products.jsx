@@ -30,10 +30,10 @@ export default (state = initialState, action) => {
 
     case UPDATE_PRODUCT:
       const productIndex = state.userProducts.findIndex(
-        prod => prod.id === action.id
+        prod => prod.id === action.pid
       );
       const updatedProduct = new Product(
-        action.id,
+        action.pid,
         state.userProducts[productIndex].ownerId,
         action.productData.title,
         action.productData.imageUrl,
@@ -43,7 +43,7 @@ export default (state = initialState, action) => {
       const updatedUserProducts = [...state.userProducts];
       updatedUserProducts[productIndex] = updatedProduct;
       const availableProductIndex = state.availableProducts.findIndex(
-        prod => prod.id === action.id
+        prod => prod.id === action.pid
       );
       const updatedAvailableProducts = [...state.availableProducts];
       updatedAvailableProducts[availableProductIndex] = updatedProduct;
