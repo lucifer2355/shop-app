@@ -10,23 +10,22 @@ export const createProduct = (title, description, imageUrl, price) => {
   return {
     type: CREATE_PRODUCT,
     productData: {
-      title: title,
-      description: description,
-      imageUrl: imageUrl,
-      price: price
+      title,
+      description,
+      imageUrl,
+      price
     }
   };
 };
 
-export const updateProduct = (id, title, description, imageUrl, price) => {
+export const updateProduct = (id, title, description, imageUrl) => {
   return {
     type: UPDATE_PRODUCT,
     pid: id,
     productData: {
-      title: title,
-      description: description,
-      imageUrl: imageUrl,
-      price: price
+      title,
+      description,
+      imageUrl
     }
   };
 };
