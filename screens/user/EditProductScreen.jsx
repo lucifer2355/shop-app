@@ -150,7 +150,7 @@ const EditProdutScreen = props => {
             label='Title'
             errorText='Please enter a valid title!'
             keyboardType='default'
-            autoCapitalize='sentence'
+            autoCapitalize='sentences'
             autoCorrect
             returnKeyType='next'
             onInputChange={inputChangeHandler}
@@ -187,7 +187,7 @@ const EditProdutScreen = props => {
             label='Description'
             errorText='Please enter a valid description!'
             keyboardType='default'
-            autoCapitalize='sentence'
+            autoCapitalize='sentences'
             autoCorrect
             muliline
             numberOfLines={3}
