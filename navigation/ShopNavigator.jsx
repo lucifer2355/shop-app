@@ -112,10 +112,4 @@ const MainNavigator = createSwitchNavigator({
   Shop: ShopNavigator
 });
 
-// export default class App extends React.Component {
-//   render() {
-//     return <MainNavigator />;
-//   }
-// }
-
 export default createAppContainer(MainNavigator);

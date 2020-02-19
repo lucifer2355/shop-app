@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useCallback, useState } from "react";
 import {
   StyleSheet,
   View,
@@ -10,8 +10,80 @@ import Card from "../../components/UI/Card";
 import Input from "../../components/UI/Input";
 import Colors from "../../constants/Colors";
 import { LinearGradient } from "expo-linear-gradient";
+import { useDispatch } from "react-redux";
+import * as authActions from "../../store/actions/auth";
 
-const AuthScreen = () => {
+const FORM_INPUT_UPDATE = "FORM_INPUT_UPDATE";
+
+const formReducer = (state, action) => {
+  if (action.type === FORM_INPUT_UPDATE) {
+    const updatedValues = {
+      ...state.inputValues,
+      [action.input]: action.value
+    };
+    const updatedValidaties = {
+      ...state.inputValidities,
+      [action.input]: action.isValid
+    };
+    let updatedFormIsValid = true;
+    for (const key in updatedValidaties) {
+      updatedFormIsValid = updatedFormIsValid && updatedValidaties[key];
+    }
+
+    return {
+      formIsValid: updatedFormIsValid,
+      inputValidities: updatedValidaties,
+      inputValues: updatedValues
+    };
+  }
+  return state;
+};
+
+const AuthScreen = props => {
+  const [isSignup, setIsSignup] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const [formState, dispatchFormState] = useReducer(formReducer, {
+    inputValues: {
+      email: "",
+      password: ""
+    },
+    inputValidities: {
+      email: false,
+      password: false
+    },
+    formIsValid: false
+  });
+
+  const authHandler = () => {
+    let action;
+    if (isSignup) {
+      action = authActions.signup(
+        formState.inputValues.email,
+        formState.inputValues.password
+      );
+    } else {
+      action = authActions.login(
+        formState.inputValues.email,
+        formState.inputValues.password
+      );
+    }
+    dispatch(action);
+  };
+
+  const inputChangeHandler = useCallback(
+    (inputIdentifier, inputValue, inputValidity) => {
+      dispatchFormState({
+        type: FORM_INPUT_UPDATE,
+        value: inputValue,
+        isValid: inputValidity,
+        input: inputIdentifier
+      });
+    },
+    [dispatchFormState]
+  );
+
   return (
     <KeyboardAvoidingView
       behavior='padding'
@@ -27,9 +99,9 @@ const AuthScreen = () => {
               keyboardType='email-address'
               required
               email
-              authCapitalize='none'
-              errorMessage='Please enter a valid email address'
-              onInputChange={() => {}}
+              autoCapitalize='none'
+              errorText='Please enter a valid email address'
+              onInputChange={inputChangeHandler}
               initialValue=''
             />
 
@@ -41,16 +113,26 @@ const AuthScreen = () => {
               required
               minLength={5}
               authCapitalize='none'
-              errorMessage='Please enter a valid password'
-              onInputChange={() => {}}
+              errorText='Please enter a valid password'
+              onInputChange={inputChangeHandler}
               initialValue=''
             />
           </ScrollView>
           <View style={styles.buttonContainer}>
-            <Button title='Login' color={Colors.primary} onPress={() => {}} />
+            <Button
+              title={isSignup ? "Sign Up" : "Loging"}
+              color={Colors.primary}
+              onPress={authHandler}
+            />
           </View>
           <View style={styles.buttonContainer}>
-            <Button title='Sign Up' color={Colors.accent} onPress={() => {}} />
+            <Button
+              title={`Switch to ${isSignup ? "Login" : "Sign Up"}`}
+              color={Colors.accent}
+              onPress={() => {
+                setIsSignup(prevState => !prevState);
+              }}
+            />
           </View>
         </Card>
       </LinearGradient>
