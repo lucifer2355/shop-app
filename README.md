@@ -14,3 +14,4 @@ ___________________ install package _______________________
 9. npm install react-navigation
 10. npm install --save moment
 11. npm install --save redux-thunk
+12. npm install --save expo-linear-gradient
