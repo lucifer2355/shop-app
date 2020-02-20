@@ -5,11 +5,11 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
+  TouchableNativeFeedback,
   Platform
 } from "react-native";
 
 // import Colors from "../../constants/Colors";
-import { TouchableNativeFeedback } from "react-native-gesture-handler";
 import Card from "../UI/Card";
 
 const ProductItem = props => {
