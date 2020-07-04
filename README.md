@@ -19,20 +19,17 @@ Basic shopping application build in react native
   4. run `npm start`
 
 
+# install package 
 
-
-
-install package 
-
-1. npm install --save redux react-redux react-navigation react-navigation-header-buttons
-2. expo install react-native-gesture-handler react-native-reanimated
-3. npm install react-navigation-stack @react-native-community/masked-view react-native-safe-area-context
-4. npm install react-native-screens
-5. npm install --save expo-font
-6. npm install --save-dev redux-devtools-extension
-7. npm install --save @expo/vector-icons
-8. npm install react-navigation-drawer
-9. npm install react-navigation
-10. npm install --save moment
-11. npm install --save redux-thunk
-12. npm install --save expo-linear-gradient
+1. `npm install --save redux react-redux react-navigation react-navigation-header-buttons` <br>
+2. `expo install react-native-gesture-handler react-native-reanimated` <br>
+3. `npm install react-navigation-stack @react-native-community/masked-view react-native-safe-area-context` <br>
+4. `npm install react-native-screens` <br>
+5. `npm install --save expo-font` <br>
+6. `npm install --save-dev redux-devtools-extension` <br>
+7. `npm install --save @expo/vector-icons` <br>
+8. `npm install react-navigation-drawer` <br>
+9. `npm install react-navigation` <br>
+10. `npm install --save moment` <br>
+11. `npm install --save redux-thunk` <br>
+12. `npm install --save expo-linear-gradient` <br>
